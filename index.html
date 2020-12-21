@@ -1,114 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Zapest</title>
-<meta charset="utf-8">
-<meta name=viewport content="width=device-width, initial-scale=1">
-<style>
-  body{
-    padding:1em;
-    margin:0;
-}
-#content{
-	outline: none;
-	font-size: 20px;
-	font-size: 1.2em;
-	letter-spacing: .6px;
-	line-height: 1.4;
-	font-family: serif;
-}
-p {
-    padding: 0;
-    margin: 0;
-}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BankersTribe</title>
 
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" type="text/css">
+  </head>
+<body id="page-top">
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
 
-@media screen and (min-width: 0px) and (max-width: 400px) {
-  #fsicon { display: none; }  /* show it on small screens */
-}
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top"><i class="fa fa-stop-circle"></i> BankersTribe</a>
+            </div>
 
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
 
-</style>
-</head>
-<body onload="javascript:loadContent();">
-<div id="main">
-<div id="content" onclick="javascript:editme();"></div>
-</div>
-<script>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
 
-var content;
-var helpText = 'Click here and start typing!';
+        </div>
 
+    </nav>
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <i class="fa fa-stop-circle fa-5x"></i><br /><br />
+                <h1>BankersTribe</h1>
+                <h2>Where all cool Bankers Hangout!</h2>
+                <hr>
+                <p></p>
+            </div>
+        </div>
+    </header>
 
-//function that alows editing
-function editme(){
-	content.contentEditable='true';
-	content.focus();
-}
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">We are Social</h2>
+                    <hr class="primary">
+                    <p>Follow us</p>
+                </div>
+                <div class="col-lg-2 col-lg-offset-2 text-center">
+                    <a href="https://facebook.com/bankerstribe" target="_blank">
+                        <i class="fa fa-facebook fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+                        <p>fb / BankersTribe</p>
+                    </a>
+                </div>
+                <div class="col-lg-2 text-center">
+                    <a href="https://twitter.com/bankerstribe" target="_blank">
+                        <i class="fa fa-twitter fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+                        <p>@BankersTribe</p>
+                    </a>
+                </div>
+                <div class="col-lg-2 text-center">
+                    <a href="https://instagram.com/bankerstribe" target="_blank">
+                        <i class="fa fa-instagram fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+                        <p>Instagram / BankersTribe</p>
+                    </a>
+                </div>
+                <div class="col-lg-2 text-center">
+                    <a href="https://bankerstribe.slack.com" target="_blank">
+                        <i class="fa fa-slack fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+                        <p>Slack / BankersTribe</p>
+                    </a>
+                </div>
 
-//To save 
-function saveme(){
-	setCookie('content',content.innerText,365);	
-} 
-
-//Load contents onload
-function loadContent(){	 
-  
-	content = document.getElementById("content");
-    content.addEventListener("input", saveme);
-    //content.addEventListener("focus", function(){  content.innerText = turndownService.turndown(content.innerHTML); });
-
-    if(getCookie('content')=="<br>"){
-		content.innerHTML = helpText;
-	}else
-	if(getCookie('content')!=""){
-        content.innerHTML = getCookie('content');; 
-	} else {
-		content.innerHTML = helpText;
-	}
-}
-
-//Clear the contents
-function clearme(){
-	if(getCookie('content')){
-		setCookie('content','',365);
-	}
-	content.innerHTML=helpText;
-}
-
-//fetch cookies
-function getCookie(c_name){
-		if (document.cookie.length>0){  
-			c_start=document.cookie.indexOf(c_name + "="); 
-				if (c_start!=-1){ 
-					c_start=c_start + c_name.length+1;
-					c_end=document.cookie.indexOf(";",c_start);
-					
-					if (c_end==-1) c_end=document.cookie.length
-					return unescape(document.cookie.substring(c_start,c_end));
-				}
-		}
-	return "";
-}
-
-//Save Cookies
-function setCookie(c_name,value,expiredays){
-	var exdate=new Date();
-	exdate.setDate(exdate.getDate()+expiredays);
-	document.cookie=c_name+ "=" +escape(value)+((expiredays==null) ? "" : "; expires="+exdate.toUTCString());
-}
-
-document.getElementById('content').addEventListener('keyup',function(e) {
-    if (e.keyCode === 13) {
-        var txt = trim(this.innerText); 
-        this.innerHTML="";
-        document.execCommand('insertHTML', false,txt+"\n\n");
-        return false;
-    }
-});
-
-	window.scrollTo(0,1)
-</script>
-<script src='//fullscreen.js.org/fullscreen.js?whwh'></script>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
